@@ -1,0 +1,6 @@
+﻿Thank you for registering an account at White Sun Crafts!
+
+Your username is: <% UserName %>
+
+
+(If you did not request this action, please notify us immediately at whitesuncrafts@anigrams.org)

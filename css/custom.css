@@ -1,0 +1,134 @@
+﻿.dropdown-prompt {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    background-color: #222;
+    margin-top: -1em;
+}
+
+.header-grid ul li.dropdown-li {
+    padding: 0.5em;
+}
+
+.header-grid ul li.li-pull-right {
+    margin-left: 5%;
+    color: white;
+}
+
+.emphasize {
+    color: #bc3726;
+    font-weight: bold;
+}
+
+.para-an {
+    padding-top: 10px;
+    margin-bottom: 15px;
+}
+
+th, td {
+    padding: 5px 10px;
+}
+
+.account-section {
+    border: 1px solid lightgray;
+    margin: 10px;
+    padding: 10px;
+}
+
+    .account-section h4 {
+        border-bottom: 1px dashed lightgray;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+    }
+
+label {
+    font-weight: normal;
+}
+
+div.footer-left {
+    margin-top: -10px;
+}
+
+.author {
+    font-style: italic;
+    font-size: 0.5em;
+    color: #767676;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.you-women p {
+    font-size: 1.3em;
+}
+
+.pages a {
+    text-decoration: none;
+}
+
+    .pages a:hover {
+        color: #fd926d;
+    }
+
+.num {
+    margin: 0px;
+    margin-left: 5px;
+    margin-top: 2px;
+    background: #DCDCDC;
+    color: #000;
+    padding: 7px 12px;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.currentNum {
+    color: #fd926d;
+}
+
+.prev {
+    color: #ccc;
+    margin: 0px;
+    width: 31px;
+    height: 32px;
+    font-size: 1em;
+    text-align: center;
+}
+
+.next {
+    color: #ccc;
+    margin: 0px;
+    width: 31px;
+    height: 32px;
+    font-size: 1em;
+    text-align: center;
+}
+
+a.plain-text {
+    padding: 0px;
+    background: none;
+    display: inline;
+    color: #555555;
+    font-size: 1em;
+    text-decoration: underline;
+    margin: 0px;
+}
+
+    a.plain-text:hover {
+        text-decoration: none;
+        background: none;
+    }
+
+ul.terms {
+    padding-left: 3%;
+}
+
+ul.terms li {
+    padding: .8%;
+}
+
+ul.terms li > ul {
+    padding-left: 3%;
+}
+
+ul.terms li > ul > li {
+    padding: .5%;
+}

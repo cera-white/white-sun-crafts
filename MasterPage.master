@@ -1,0 +1,214 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!--A Design by W3layouts 
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
+<!DOCTYPE html>
+<html>
+<head runat="server">
+    <title>White Sun Crafts | Home</title>
+    <link href="~/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <!-- Custom Theme files -->
+    <link href="~/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="~/css/custom.css" rel="stylesheet" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="White Sun, White Sun Crafts, crafts, jewelry, handmade jewelry, necklaces, bracelets, pendants, designs, Cera A. White, Lori G. White, Anigrams, Anigrams Productions" />
+    <meta name="author" content="Cera A. White" />
+    <meta name="description" content="White Sun Crafts is a small online business run by the mother-daughter duo, Lori and Cera White. We sell one-of-a-kind, handmade jewelry and crafts." />
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!--fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Oswald:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <!--//fonts-->
+
+    <script type="text/javascript">
+        function stopRKey(evt) {
+            var evt = (evt) ? evt : ((event) ? event : null);
+            var node = (evt.target) ? evt.target : ((evt.srcElement) ? evt.srcElement : null);
+            if ((evt.keyCode == 13) && (node.type == "text")) { return false; }
+        }
+
+        document.onkeypress = stopRKey;
+    </script>
+
+    <asp:ContentPlaceHolder ID="cphHead" runat="server"></asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="mainForm" runat="server">
+        <asp:ScriptManager ID="ScriptManager1" runat="server">
+            <Scripts>
+                <asp:ScriptReference Path="~/js/jquery.min.js" />
+                <asp:ScriptReference Path="~/js/bootstrap.js" />
+                <asp:ScriptReference Path="~/js/jquery.etalage.min.js" />
+                <asp:ScriptReference Path="~/js/jquery.jscrollpane.min.js" />
+            </Scripts>
+        </asp:ScriptManager>
+        
+        <!--header-->
+        <div class="header">
+            <div class="header-top">
+                <div class="container">
+                    <div class="header-grid">
+                        <ul>
+                            <li>
+                                <a href="~/ShoppingCart.aspx" runat="server">
+                                    <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
+                                    Cart (<asp:Label ID="lblCartCount" runat="server" Text="0"></asp:Label>)</a>
+                            </li>
+                            <li><a href="~/About.aspx" runat="server">About</a></li>
+                            <li><a href="~/Products.aspx" runat="server">Products</a></li>
+                            <li><a href="~/Policies.aspx" runat="server">Policies</a></li>
+                            <li><a href="~/Contact.aspx" runat="server">Contact</a></li>
+
+                            <%if (Request.IsAuthenticated && Page.User.IsInRole("Admin"))
+                                { %>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle dropdown-prompt" id="ddlAdmin" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Administrator
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="ddlAdmin">
+                                    <li class="dropdown-li"><a href="~/Secure/Admin/ManageUsers.aspx" runat="server">Manage Users</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Admin/ManageCategories.aspx" runat="server">Manage Categories</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Admin/ManageProductStatuses.aspx" runat="server">Manage Statuses</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Vendor/ManageVendors.aspx" runat="server">Manage Vendors</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Vendor/ManageProducts.aspx" runat="server">Manage Products</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Vendor/ManageOrders.aspx" runat="server">Manage Orders</a></li>
+                                </ul>
+                            </li>
+                            <%}
+                                else if (Request.IsAuthenticated && Page.User.IsInRole("Vendor"))
+                                { %>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle dropdown-prompt" id="ddlVendor" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Vendor Controls
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="ddlVendor">
+                                    <li class="dropdown-li"><a href="~/Secure/Vendor/ManageVendors.aspx" runat="server">Manage Vendors</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Vendor/ManageProducts.aspx" runat="server">Manage Products</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Vendor/ManageOrders.aspx" runat="server">Manage Orders</a></li>
+                                </ul>
+                            </li>
+                            <%} %>
+                        </ul>
+
+                    </div>
+
+
+                    <%if (Request.IsAuthenticated)
+                        { %>
+                    <div class="header-grid pull-right">
+                        <ul>
+                            <li class="dropdown li-pull-right">Welcome, <a class="dropdown-toggle dropdown-prompt" id="ddlAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                <asp:LoginName ID="LoginName1" runat="server" />
+                                <span class="caret"></span>
+                            </a>
+                                <ul class="dropdown-menu" aria-labelledby="ddlAccount">
+                                    <li class="dropdown-li"><a href="~/Secure/ManageAccount.aspx" runat="server">My Account</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Customer/Wishlist.aspx" runat="server">My Wishlist</a></li>
+                                    <li class="dropdown-li"><a href="~/Secure/Customer/OrderHistory.aspx" runat="server">Order History</a></li>
+                                    <li class="dropdown-li">
+                                        <asp:LoginStatus ID="LoginStatus1" runat="server" />
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <%}
+                        else
+                        {%>
+                    <div class="header-grid-right">
+                        <asp:Login ID="loginMaster" runat="server" FailureAction="RedirectToLoginPage" CreateUserText="Sign Up" CreateUserUrl="~/GetRegistered.aspx" RenderOuterTable="False" OnLoggedIn="loginMaster_LoggedIn">
+                            <LayoutTemplate>
+                                <asp:TextBox runat="server" ID="UserName" PlaceHolder="Username"></asp:TextBox>
+
+                                <asp:TextBox runat="server" TextMode="Password" ID="Password" PlaceHolder="Password"></asp:TextBox>
+
+                                <asp:Button runat="server" CommandName="Login" Text="Go" ValidationGroup="ctl00$loginMaster" ID="LoginButton"></asp:Button>
+
+                                <label>|</label>
+                                <asp:HyperLink ID="btnSignUp" runat="server" CssClass="sign-up" NavigateUrl="~/GetRegistered.aspx">Sign Up</asp:HyperLink>
+                            </LayoutTemplate>
+                        </asp:Login>
+                    </div>
+                    <%} %>
+
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="header-bottom">
+                    <div class="logo">
+                        <a href="~/Default.aspx" runat="server">
+                            <img src="~/images/logo.png" alt="White Sun Crafts" runat="server" style="max-width: 290px"></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="header-bottom-bottom">
+                    <div class="top-nav">
+                        <span class="menu"></span>
+                        <ul>
+                            <li runat="server" id="liHome"><a href="~/Default.aspx" runat="server">HOME</a></li>
+                            <li runat="server" id="liNecklaces"><a href="~/Products.aspx?cat=1" runat="server">NECKLACES</a></li>
+                            <li runat="server" id="liBracelets"><a href="~/Products.aspx?cat=2" runat="server">BRACELETS</a></li>
+                            <li runat="server" id="liPendants"><a href="~/Products.aspx?cat=3" runat="server">PENDANTS</a></li>
+                            <li runat="server" id="liProducts"><a href="~/Products.aspx" runat="server">ALL PRODUCTS</a></li>
+                        </ul>
+                        <script>
+                            $("span.menu").click(function () {
+                                $(".top-nav ul").slideToggle(500, function () {
+                                });
+                            });
+                        </script>
+
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="search">
+                        <asp:TextBox ID="tbSearch" runat="server" PlaceHolder="Search Products"></asp:TextBox>
+                        <asp:Button ID="btnSearch" runat="server" Value="" OnClick="btnSearch_Click" />
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+        <!--content-->
+        <div class="content">
+            <div class="container">
+                <asp:ContentPlaceHolder ID="cphMain" runat="server"></asp:ContentPlaceHolder>
+            </div>
+        </div>
+        <!---->
+        <div class="footer">
+            <div class="container">
+                <div class="footer-class">
+                    <div class="class-footer">
+                        <ul>
+                            <li><a href="~/Default.aspx" class="scroll" runat="server">HOME</a><label>|</label></li>
+                            <li><a href="~/About.aspx" class="scroll" runat="server">ABOUT</a><label>|</label></li>
+                            <li><a href="~/Products.aspx" class="scroll" runat="server">PRODUCTS</a><label>|</label></li>
+                            <li><a href="~/Policies.aspx" class="scroll" runat="server">POLICIES</a><label>|</label></li>
+                            <li><a href="~/Contact.aspx" class="scroll" runat="server">CONTACT</a><label>|</label></li>
+                            <li><a href="http://support.anigrams.org" class="scroll" target="_blank" title="Submit problems and feedback through the Anigrams Support app">SUPPORT</a><label>|</label></li>
+                            <li><a href="~/CustomOrders.aspx" class="scroll" runat="server">CUSTOM ORDERS</a><label>|</label></li>
+                            <%if (!Request.IsAuthenticated)
+                                { %>
+                            <li><a href="~/GetRegistered.aspx" class="scroll" runat="server">REGISTER</a><label>|</label></li>
+                            <%} %>
+                        </ul>
+                        <p class="footer-grid">&copy; <%= DateTime.Now.Year %> White Sun Crafts by <a href="http://www.anigrams.org" target="_blank">Anigrams Productions</a> | Template by <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
+                    </div>
+                    <div class="footer-left">
+                        <a href="~/Default.aspx" runat="server">
+                            <img src="~/images/logo1.png" alt="White Sun Crafts" runat="server" style="max-width: 275px"></a>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
